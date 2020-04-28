@@ -1,8 +1,8 @@
 <template>
 	<view class="content b-t">
-		<view class="list b-b" v-for="(item, index) in addressList" :key="index" @click="checkAddress(item)">
-			<view class="wrapper">
-				<view class="address-box">
+		<view class="list b-b vs-row vs-align-center" v-for="(item, index) in addressList" :key="index" @click="checkAddress(item)">
+			<view class="vs-column vs-flex-item">
+				<view class="address-box vs-row vs-align-center">
 					<text v-if="item.default" class="tag">默认</text>
 					<text class="address">{{item.addressName}} {{item.area}}</text>
 				</view>
@@ -11,13 +11,9 @@
 					<text class="mobile">{{item.mobile}}</text>
 				</view>
 			</view>
-			<text class="yticon icon-bianji" @click.stop="addAddress('edit', item)"></text>
+			<text class="yticon icon-bianji vs-row vs-align-center" @click.stop="addAddress('edit', item)"></text>
 		</view>
-		<text style="display:block;padding: 16upx 30upx 10upx;lihe-height: 1.6;color: #fa436a;font-size: 24upx;">
-			重要：添加和修改地址回调仅增加了一条数据做演示，实际开发中将回调改为请求后端接口刷新一下列表即可
-		</text>
-		
-		<button class="add-btn" @click="addAddress('add')">新增地址</button>
+		<button class="add-btn vs-row vs-align-center vs-space-center" @click="addAddress('add')">新增地址</button>
 	</view>
 </template>
 
@@ -82,20 +78,11 @@
 		position: relative;
 	}
 	.list{
-		display: flex;
-		align-items: center;
 		padding: 20upx 30upx;;
 		background: #fff;
 		position: relative;
 	}
-	.wrapper{
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-	}
 	.address-box{
-		display: flex;
-		align-items: center;
 		.tag{
 			font-size: 24upx;
 			color: $base-color;
@@ -120,8 +107,6 @@
 		}
 	}
 	.icon-bianji{
-		display: flex;
-		align-items: center;
 		height: 80upx;
 		font-size: 40upx;
 		color: $font-color-light;
@@ -134,9 +119,6 @@
 		right: 30upx;
 		bottom: 16upx;
 		z-index: 95;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 690upx;
 		height: 80upx;
 		font-size: 32upx;

@@ -1,13 +1,13 @@
 <template>
 	<view class="container">
 		<!-- 空白页 -->
-		<view v-if="!hasLogin || empty===true" class="empty">
+		<view v-if="!hasLogin || empty===true" class="empty vs-column vs-space-center vs-align-center">
 			<image src="/static/emptyCart.jpg" mode="aspectFit"></image>
-			<view v-if="hasLogin" class="empty-tips">
+			<view v-if="hasLogin" class="empty-tips vs-row">
 				空空如也
 				<navigator class="navigator" v-if="hasLogin" url="../index/index" open-type="switchTab">随便逛逛></navigator>
 			</view>
-			<view v-else class="empty-tips">
+			<view v-else class="empty-tips vs-row">
 				空空如也
 				<view class="navigator" @click="navToLogin">去登陆></view>
 			</view>
@@ -17,7 +17,7 @@
 			<view class="cart-list">
 				<block v-for="(item, index) in cartList" :key="item.id">
 					<view
-						class="cart-item" 
+						class="cart-item vs-row" 
 						:class="{'b-b': index!==cartList.length-1}"
 					>
 						<view class="image-wrapper">
@@ -34,7 +34,7 @@
 								@click="check('item', index)"
 							></view>
 						</view>
-						<view class="item-right">
+						<view class="item-right vs-column vs-flex-item">
 							<text class="clamp title">{{item.title}}</text>
 							<text class="attr">{{item.attr_val}}</text>
 							<text class="price">¥{{item.price}}</text>
@@ -54,24 +54,17 @@
 				</block>
 			</view>
 			<!-- 底部菜单栏 -->
-			<view class="action-section">
+			<view class="action-section vs-row vs-align-center">
 				<view class="checkbox">
 					<image 
 						:src="allChecked?'/static/selected.png':'/static/select.png'" 
 						mode="aspectFit"
 						@click="check('all')"
 					></image>
-					<view class="clear-btn" :class="{show: allChecked}" @click="clearCart">
-						清空
-					</view>
 				</view>
-				<view class="total-box">
+				<view class="total-box vs-column vs-flex-item">
 					<text class="price">¥{{total}}</text>
-					<text class="coupon">
-						已优惠
-						<text>74.35</text>
-						元
-					</text>
+					<text class="coupon">已优惠74.35元</text>
 				</view>
 				<button type="primary" class="no-border confirm-btn" @click="createOrder">去结算</button>
 			</view>
@@ -229,10 +222,6 @@
 			width: 100%;
 			height: 100vh;
 			padding-bottom:100upx;
-			display:flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items:center;
 			background: #fff;
 			image{
 				width: 240upx;
@@ -240,7 +229,6 @@
 				margin-bottom:30upx;
 			}
 			.empty-tips{
-				display:flex;
 				font-size: $font-sm+2upx;
 				color: $font-color-disabled;
 				.navigator{
@@ -252,7 +240,6 @@
 	}
 	/* 购物车列表项 */
 	.cart-item{
-		display:flex;
 		position:relative;
 		padding:30upx 40upx;
 		.image-wrapper{
@@ -277,9 +264,6 @@
 			border-radius: 50px;
 		}
 		.item-right{
-			display:flex;
-			flex-direction: column;
-			flex: 1;
 			overflow: hidden;
 			position:relative;
 			padding-left: 30upx;
@@ -316,8 +300,6 @@
 		left: 30upx;
 		bottom:30upx;
 		z-index: 95;
-		display: flex;
-		align-items: center;
 		width: 690upx;
 		height: 100upx;
 		padding: 0 30upx;
@@ -325,39 +307,14 @@
 		box-shadow: 0 0 20upx 0 rgba(0,0,0,.5);
 		border-radius: 16upx;
 		.checkbox{
+      width: 52upx;
 			height:52upx;
-			position:relative;
 			image{
 				width: 52upx;
-				height: 100%;
-				position:relative;
-				z-index: 5;
-			}
-		}
-		.clear-btn{
-			position:absolute;
-			left: 26upx;
-			top: 0;
-			z-index: 4;
-			width: 0;
-			height: 52upx;
-			line-height: 52upx;
-			padding-left: 38upx;
-			font-size: $font-base;
-			color: #fff;
-			background: $font-color-disabled;
-			border-radius:0 50px 50px 0;
-			opacity: 0;
-			transition: .2s;
-			&.show{
-				opacity: 1;
-				width: 120upx;
+				height: 52upx;
 			}
 		}
 		.total-box{
-			flex: 1;
-			display:flex;
-			flex-direction: column;
 			text-align:right;
 			padding-right: 40upx;
 			.price{

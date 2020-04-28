@@ -2,7 +2,7 @@
 	<view>
 		<swiper class="carousel" indicator-dots=true circular=true interval="3000" duration="700">
 			<swiper-item v-for="(item,index) in data.imgList" :key="index">
-				<view class="image-wrapper">
+				<view class="image-wrapper vs-row vs-align-center vs-space-center">
 					<image
 						:src="item.src" 
 						:class="item.loaded" 
@@ -43,7 +43,7 @@
 					v-for="(item, index) in data.guessList" :key="index"
 					class="guess-item"
 				>
-					<view class="image-wrapper">
+					<view class="image-wrapper vs-row vs-align-center vs-space-center">
 						<image 
 							:src="item.src" 
 							:class="item.loaded" 
@@ -148,9 +148,6 @@
 	.carousel {
 		height: 200px;
 		.image-wrapper{
-			display: flex;
-			justify-content: center;
-			align-content: center;
 			width: 100%;
 			height: 100%;
 			overflow: hidden;

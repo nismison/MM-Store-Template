@@ -1,30 +1,30 @@
 <template>
 	<view class="content">
-		<view class="row b-b">
+		<view class="row b-b vs-row vs-align-center">
 			<text class="tit">联系人</text>
-			<input class="input" type="text" v-model="addressData.name" placeholder="收货人姓名" placeholder-class="placeholder" />
+			<input class="input vs-flex-item" type="text" v-model="addressData.name" placeholder="收货人姓名" placeholder-class="placeholder" />
 		</view>
-		<view class="row b-b">
+		<view class="row b-b vs-row vs-align-center">
 			<text class="tit">手机号</text>
-			<input class="input" type="number" v-model="addressData.mobile" placeholder="收货人手机号码" placeholder-class="placeholder" />
+			<input class="input vs-flex-item text-left" type="number" v-model="addressData.mobile" placeholder="收货人手机号码" placeholder-class="placeholder" />
 		</view>
-		<view class="row b-b">
+		<view class="row b-b vs-row vs-align-center">
 			<text class="tit">地址</text>
-			<text @click="chooseLocation" class="input">
+			<text @click="chooseLocation" class="input vs-flex-item">
 				{{addressData.addressName}}
 			</text>
 			<text class="yticon icon-shouhuodizhi"></text>
 		</view>
-		<view class="row b-b"> 
+		<view class="row b-b vs-row vs-align-center"> 
 			<text class="tit">门牌号</text>
-			<input class="input" type="text" v-model="addressData.area" placeholder="楼号、门牌" placeholder-class="placeholder" />
+			<input class="input vs-flex-item" type="text" v-model="addressData.area" placeholder="楼号、门牌" placeholder-class="placeholder" />
 		</view>
 		
-		<view class="row default-row">
-			<text class="tit">设为默认</text>
+		<view class="row default-row vs-row vs-align-center">
+			<text class="tit vs-flex-item">设为默认</text>
 			<switch :checked="addressData.defaule" color="#fa436a" @change="switchChange" />
 		</view>
-		<button class="add-btn" @click="confirm">提交</button>
+		<button class="add-btn vs-row vs-align-center vs-space-center" @click="confirm">提交</button>
 	</view>
 </template>
 
@@ -107,8 +107,6 @@
 	}
 
 	.row{
-		display: flex;
-		align-items: center;
 		position: relative;
 		padding:0 30upx;
 		height: 110upx;
@@ -121,7 +119,6 @@
 			color: $font-color-dark;
 		}
 		.input{
-			flex: 1;
 			font-size: 30upx;
 			color: $font-color-dark;
 		}
@@ -132,17 +129,11 @@
 	}
 	.default-row{
 		margin-top: 16upx;
-		.tit{
-			flex: 1;
-		}
 		switch{
 			transform: translateX(16upx) scale(.9);
 		}
 	}
 	.add-btn{
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 690upx;
 		height: 80upx;
 		margin: 60upx auto;

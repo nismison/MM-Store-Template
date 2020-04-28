@@ -1,15 +1,15 @@
 <template>
-	<view class="content">
+	<view class="content vs-row">
 		<scroll-view scroll-y class="left-aside">
-			<view v-for="item in flist" :key="item.id" class="f-item b-b" :class="{active: item.id === currentId}" @click="tabtap(item)">
+			<view v-for="item in flist" :key="item.id" class="f-item b-b vs-row vs-align-center vs-space-center" :class="{active: item.id === currentId}" @click="tabtap(item)">
 				{{item.name}}
 			</view>
 		</scroll-view>
-		<scroll-view scroll-with-animation scroll-y class="right-aside" @scroll="asideScroll" :scroll-top="tabScrollTop">
-			<view v-for="item in slist" :key="item.id" class="s-list" :id="'main-'+item.id">
-				<text class="s-item">{{item.name}}</text>
-				<view class="t-list">
-					<view @click="navToList(item.id, titem.id)" v-if="titem.pid === item.id" class="t-item" v-for="titem in tlist" :key="titem.id">
+		<scroll-view scroll-with-animation scroll-y class="right-aside vs-flex-item" :scroll-into-view="scrollIntoView">
+			<view v-for="item in slist" :key="item.id" class="s-list" :id="'main-'+item.pid">
+				<text class="s-item vs-row vs-align-center">{{item.name}}</text>
+				<view class="t-list vs-row">
+					<view @click="navToList(item.id, titem.id)" v-if="titem.pid === item.id" class="t-item vs-column vs-align-center vs-space-center" v-for="titem in tlist" :key="titem.id">
 						<image :src="titem.picture"></image>
 						<text>{{titem.name}}</text>
 					</view>
@@ -29,6 +29,7 @@
 				flist: [],
 				slist: [],
 				tlist: [],
+        scrollIntoView: ''
 			}
 		},
 		onLoad(){
@@ -45,43 +46,12 @@
 					}else{
 						this.tlist.push(item); //3级分类
 					}
-				}) 
+				})
 			},
 			//一级分类点击
 			tabtap(item){
-				if(!this.sizeCalcState){
-					this.calcSize();
-				}
-				
+        this.scrollIntoView = "main-" + item.id
 				this.currentId = item.id;
-				let index = this.slist.findIndex(sitem=>sitem.pid === item.id);
-				this.tabScrollTop = this.slist[index].top;
-			},
-			//右侧栏滚动
-			asideScroll(e){
-				if(!this.sizeCalcState){
-					this.calcSize();
-				}
-				let scrollTop = e.detail.scrollTop;
-				let tabs = this.slist.filter(item=>item.top <= scrollTop).reverse();
-				if(tabs.length > 0){
-					this.currentId = tabs[0].pid;
-				}
-			},
-			//计算右侧栏每个tab的高度等信息
-			calcSize(){
-				let h = 0;
-				this.slist.forEach(item=>{
-					let view = uni.createSelectorQuery().select("#main-" + item.id);
-					view.fields({
-						size: true
-					}, data => {
-						item.top = h;
-						h += data.height;
-						item.bottom = h;
-					}).exec();
-				})
-				this.sizeCalcState = true;
 			},
 			navToList(sid, tid){
 				uni.navigateTo({
@@ -98,10 +68,7 @@
 		height: 100%;
 		background-color: #f8f8f8;
 	}
-
-	.content {
-		display: flex;
-	}
+	
 	.left-aside {
 		flex-shrink: 0;
 		width: 200upx;
@@ -109,9 +76,6 @@
 		background-color: #fff;
 	}
 	.f-item {
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 100%;
 		height: 100upx;
 		font-size: 28upx;
@@ -136,20 +100,21 @@
 	}
 
 	.right-aside{
-		flex: 1;
 		overflow: hidden;
 		padding-left: 20upx;
 	}
 	.s-item{
-		display: flex;
-		align-items: center;
+    position: sticky;
+    top: 0;
+    padding-left: 20rpx;
 		height: 70upx;
 		padding-top: 8upx;
 		font-size: 28upx;
 		color: $font-color-dark;
+    background-color: #fff;
+    z-index: 99;
 	}
 	.t-list{
-		display: flex;
 		flex-wrap: wrap;
 		width: 100%;
 		background: #fff;
@@ -162,10 +127,6 @@
 	}
 	.t-item{
 		flex-shrink: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
 		width: 176upx;
 		font-size: 26upx;
 		color: #666;

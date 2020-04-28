@@ -27,5 +27,202 @@ $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;
 $uni-color-error: #dd524d;
 
+// iconfont
+@font-face {
+  font-family: 'iconfont';  /* project id 1717484 */
+  src: url('//at.alicdn.com/t/font_1717484_evv23xwael.eot');
+  src: url('//at.alicdn.com/t/font_1717484_evv23xwael.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1717484_evv23xwael.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1717484_evv23xwael.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1717484_evv23xwael.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1717484_evv23xwael.svg#iconfont') format('svg');
+}
+
+.iconfont{
+	font-family:"iconfont" !important;
+	font-size:32rpx;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 
+// 下边距
+.margin-b5 { margin-bottom: 5rpx; }
+.margin-b10 { margin-bottom: 10rpx; }
+.margin-b15 { margin-bottom: 15rpx; }
+.margin-b20 { margin-bottom: 20rpx; }
+.margin-b25 { margin-bottom: 25rpx; }
+.margin-b30 { margin-bottom: 30rpx; }
+.margin-b40 { margin-bottom: 40rpx; }
+.margin-b60 { margin-bottom: 60rpx; }
+
+// 字体大小
+.font-18 {
+	font-style: normal;
+	font-size: 18rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-20 {
+	font-style: normal;
+	font-size: 20rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-22 {
+	font-style: normal;
+	font-size: 22rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-24 {
+	font-style: normal;
+	font-size: 24rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-26 {
+	font-style: normal;
+	font-size: 26rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-28 {
+	font-style: normal;
+	font-size: 28rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-30 {
+	font-style: normal;
+	font-size: 30rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-32 {
+	font-style: normal;
+	font-size: 32rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-34 {
+	font-style: normal;
+	font-size: 34rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-36 {
+	font-style: normal;
+	font-size: 36rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-38 {
+	font-style: normal;
+	font-size: 38rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-40 {
+	font-style: normal;
+	font-size: 40rpx;
+	font-family: Droid Sans Fallback;
+}
+.font-80 {
+	font-style: normal;
+	font-size: 40rpx;
+	font-family: Droid Sans Fallback;
+}
+
+// 行高
+.line-height-20 {
+	line-height: 40rpx;
+}
+.line-height-16 {
+	line-height: 32rpx;
+}
+
+// 分隔行
+.line {
+  /* #ifndef APP-PLUS-NVUE */
+  margin: 0 auto;
+  /* #endif */
+  /* #ifdef APP-PLUS-NVUE */
+  align-items: center;
+  justify-content: center;
+  /* #endif */
+  height: 2rpx;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+// 字体对齐
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+// color相关
+.font-white { color: #FFFFFF; }
+.font-red { color: #dc0000; }
+
+// 黑色色阶向下
+.font-black { color: #000; }
+.font-black-3 { color: #333; }
+.font-black-6 { color: #666; }
+.font-black-9 { color: #999; }
+
+// 字体宽度
+.font-weight-400 { font-weight: 400; }
+.font-weight-500 { font-weight: bold; }
+
+// 间隔
+.spacing-20 {
+	width: 750rpx;
+	height: 20rpx;
+	background-color: #f8f8f8;
+}
+
+// 文字限制
+.text-lines {
+	&-1 {
+		overflow: hidden;
+		word-break: break-all;  /* break-all(允许在单词内换行。) */
+		text-overflow: ellipsis;  /* 超出部分省略号 */
+		display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+		-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+		-webkit-line-clamp: 1; /** 显示的行数 **/
+	}
+	
+	&-2 {
+		@extend .text-lines-1;
+		-webkit-line-clamp: 2; /** 显示的行数 **/
+	}
+	
+	&-3 {
+		@extend .text-lines-1;
+		-webkit-line-clamp: 3; /** 显示的行数 **/
+	}
+}
+
+// 圆角
+.radius-10 { border-radius: 10rpx; }
+.radius-20 { border-radius: 20rpx; }
+.radius-30 { border-radius: 30rpx; }
+.radius-circle { border-radius: 50%; }
+.radius-height { border-radius: 10000px; }
+
+// flex相关
+.vs-flex-item { flex: 1; }
+.vs-space-between { justify-content: space-between; }
+.vs-space-around { justify-content: space-around; }
+.vs-space-center { justify-content: center; }
+.vs-space-end { justify-content: flex-end; }
+.vs-row {
+  /* #ifndef APP-PLUS-NVUE */
+  display: flex;
+  /* #endif */
+  flex-direction: row;
+}
+.vs-column { 
+  /* #ifndef APP-PLUS-NVUE */
+  display: flex;
+  /* #endif */
+  flex-direction: column;
+}
+.vs-align-base-line { align-items: baseline; }
+.vs-align-end { align-items: flex-end; }
+.vs-align-center { align-items: center; }
+.vs-align-start { align-items: flex-start; }
+.vs-item-hover { background-color: rgba(0, 0, 0, 0.05); }
+.vs-btn-hover { opacity: 0.8; }
